@@ -1,0 +1,327 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "CreateTodoRequest": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "priority": {
+                    "$ref": "#/definitions/Priority"
+                },
+                "status": {
+                    "$ref": "#/definitions/TodoStatus"
+                },
+                "storyPoint": {
+                    "type": "number"
+                },
+                "tags": {
+                    "items": {
+                        "additionalProperties": {
+                            "properties": {
+                                "color": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "color",
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content",
+                "title"
+            ],
+            "type": "object"
+        },
+        "OmitTest": {
+            "properties": {
+                "priority": {
+                    "$ref": "#/definitions/Priority"
+                },
+                "status": {
+                    "$ref": "#/definitions/TodoStatus"
+                },
+                "storyPoint": {
+                    "type": "number"
+                },
+                "tags": {
+                    "items": {
+                        "additionalProperties": {
+                            "properties": {
+                                "color": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "color",
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "title"
+            ],
+            "type": "object"
+        },
+        "PartialTest": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "priority": {
+                    "$ref": "#/definitions/Priority"
+                },
+                "status": {
+                    "$ref": "#/definitions/TodoStatus"
+                },
+                "storyPoint": {
+                    "type": "number"
+                },
+                "tags": {
+                    "items": {
+                        "additionalProperties": {
+                            "properties": {
+                                "color": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "color",
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Priority": {
+            "enum": [
+                "high",
+                "low",
+                "medium"
+            ],
+            "type": "string"
+        },
+        "RequiredTest": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "priority": {
+                    "$ref": "#/definitions/Priority"
+                },
+                "status": {
+                    "$ref": "#/definitions/TodoStatus"
+                },
+                "storyPoint": {
+                    "type": "number"
+                },
+                "tags": {
+                    "items": {
+                        "additionalProperties": {
+                            "properties": {
+                                "color": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "color",
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content",
+                "priority",
+                "status",
+                "storyPoint",
+                "tags",
+                "title"
+            ],
+            "type": "object"
+        },
+        "Tag": {
+            "additionalProperties": {
+                "properties": {
+                    "color": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "color",
+                    "name"
+                ],
+                "type": "object"
+            },
+            "type": "object"
+        },
+        "Todo": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "deleted": {
+                    "type": "boolean"
+                },
+                "deletedAt": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "priority": {
+                    "$ref": "#/definitions/Priority"
+                },
+                "status": {
+                    "$ref": "#/definitions/TodoStatus"
+                },
+                "storyPoint": {
+                    "type": "number"
+                },
+                "tags": {
+                    "items": {
+                        "additionalProperties": {
+                            "properties": {
+                                "color": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "color",
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "content",
+                "createdAt",
+                "deleted",
+                "id",
+                "status",
+                "tags",
+                "title",
+                "updatedAt"
+            ],
+            "type": "object"
+        },
+        "TodoStatus": {
+            "enum": [
+                "DONE",
+                "IN_PROGRESS",
+                "IN_REVIEW",
+                "TODO"
+            ],
+            "type": "string"
+        },
+        "UpdateTodoRequest": {
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "priority": {
+                    "$ref": "#/definitions/Priority"
+                },
+                "status": {
+                    "$ref": "#/definitions/TodoStatus"
+                },
+                "storyPoint": {
+                    "type": "number"
+                },
+                "tags": {
+                    "items": {
+                        "additionalProperties": {
+                            "properties": {
+                                "color": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "color",
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
+

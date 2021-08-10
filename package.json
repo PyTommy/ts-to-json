@@ -4,12 +4,11 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"ts:json": "quicktype ./inputs/typescript.ts -o ./outputs/fromTypescript.json --lang schema",
-		"json:ts": "quicktype ./inputs/json.json -o ./outputs/fromJson.ts --lang typescript"
+		"ts:json": "typescript-json-schema --required \"inputs/typescript.ts\" \"*\" > outputs/schema.json"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"quicktype": "^15.0.260"
+		"typescript-json-schema": "^0.50.1"
 	}
 }

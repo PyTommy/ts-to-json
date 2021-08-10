@@ -1,23 +1,16 @@
 // ==========
-// Type Utils
-// ==========
-// type OverrideType<T, R> = Omit<T, keyof R> & R;
-// type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-// type Require<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
-
-// ==========
 // Shared Types
 // ==========
-enum TodoStatus {
+export enum TodoStatus {
 	TODO = 'TODO',
 	IN_PROGRESS = 'IN_PROGRESS',
 	IN_REVIEW = 'IN_REVIEW',
 	DONE = 'DONE',
 }
 
-type Priority = 'low' | 'medium' | 'high';
+export type Priority = 'low' | 'medium' | 'high';
 
-type Tag = {
+export type Tag = {
 	[key: string]: {
 		name: string;
 		color: string;
@@ -27,7 +20,7 @@ type Tag = {
 // ==========
 // Entities
 // ==========
-type Todo = {
+export type Todo = {
 	// Basics
 	id: string;
 	createdAt: Date;
@@ -46,7 +39,7 @@ type Todo = {
 	storyPoint?: number;
 };
 
-type CreateTodoRequest = {
+export type CreateTodoRequest = {
 	title: string;
 	content: string;
 	status?: TodoStatus;
@@ -55,7 +48,7 @@ type CreateTodoRequest = {
 	storyPoint?: number;
 };
 
-type UpdateTodoRequest = {
+export type UpdateTodoRequest = {
 	title?: string;
 	content?: string;
 	status?: TodoStatus;
@@ -63,3 +56,8 @@ type UpdateTodoRequest = {
 	priority?: Priority;
 	storyPoint?: number;
 };
+
+export type PartialTest = Partial<CreateTodoRequest>;
+export type OmitTest = Omit<CreateTodoRequest, 'content'>;
+
+export type RequiredTest = Required<PartialTest>;
