@@ -1,0 +1,15 @@
+{
+	"name": "convert-typescript-to-schema",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"ts:json": "quicktype ./inputs/typescript.ts -o ./outputs/fromTypescript.json --lang schema",
+		"json:ts": "quicktype ./inputs/json.json -o ./outputs/fromJson.ts --lang typescript"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"quicktype": "^15.0.260"
+	}
+}
