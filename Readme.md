@@ -20,14 +20,3 @@ npm run ts:json
 #### 注意
 
 - `Patial`などを使うと、schema が汚くなる。
-
-### json schema => typescript
-
-#### 実行方法
-
-1. `./inputs/json.json`に型定義する。
-2. command 叩く。
-
-```sh
-npm run json:ts
-```
