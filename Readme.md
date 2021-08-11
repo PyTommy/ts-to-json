@@ -19,4 +19,19 @@ npm run ts:json
 
 #### 注意
 
-- `Patial`などを使うと、schema が汚くなる。
+Union Types を複雑に使うと、swagger.json が汚くなる。
+
+```typescript
+interface User {
+	id: string;
+	name: string;
+	birthday?: Date;
+}
+
+// OK
+type SetBirthdayBody = Pick<User, 'id' | 'birthday'>;
+
+// NG
+type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+type UpdateUserBody = Optional<User, 'name'>;
+```
